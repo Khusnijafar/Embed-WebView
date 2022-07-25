@@ -30,6 +30,8 @@ public class SampleWebView : MonoBehaviour
     public string Url;
     public Text status;
     WebViewObject webViewObject;
+    public string jsonURL;
+    public Renderer thisRenderer;
 
     IEnumerator Start()
     {
@@ -148,13 +150,15 @@ public class SampleWebView : MonoBehaviour
 
         //webViewObject.SetScrollbarsVisibility(true);
 
-        webViewObject.SetMargins(5, 100, 5, Screen.height / 4);
+        webViewObject.SetMargins(5, 100, 5, Screen.height / 12);
         webViewObject.SetTextZoom(100);  // android only. cf. https://stackoverflow.com/questions/21647641/android-webview-set-font-size-system-default/47017410#47017410
         webViewObject.SetVisibility(true);
 
 #if !UNITY_WEBPLAYER && !UNITY_WEBGL
         if (Url.StartsWith("http")) {
-            webViewObject.LoadURL(Url.Replace(" ", "%20"));
+            // webViewObject.LoadURL(Url.Replace(" ", "%20"));
+            StartCoroutine(getData());
+            thisRenderer.material.color = Color.red;
         } else {
             var exts = new string[]{
                 ".jpg",
@@ -195,6 +199,33 @@ public class SampleWebView : MonoBehaviour
         }
 #endif
         yield break;
+    }
+
+    public IEnumerator getData()
+    {
+
+        Debug.Log("Processing...");
+        Debug.Log("URL: " + jsonURL);
+        WWW _www = new WWW(jsonURL);
+        yield return _www;
+
+        JSonDataClass jsnData = JsonUtility.FromJson<JSonDataClass>(_www.text);
+        Debug.Log("www" + jsnData.message);
+        WWW image = new WWW(jsnData.message);
+        yield return image;
+
+         webViewObject.LoadURL(jsnData.message);       
+
+        thisRenderer.material.color = Color.white;
+        thisRenderer.material.mainTexture = image.texture;
+        if(_www.error == null) 
+        {
+         webViewObject.LoadURL(jsnData.message);          
+        }
+        else 
+        {
+            Debug.Log("Error: ");
+        }
     }
 
     void OnGUI()

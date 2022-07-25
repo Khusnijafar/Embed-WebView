@@ -1,0 +1,27 @@
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Unity WebView</title>
+  <script>
+    function myFunction() {
+      let url = "https://dog.ceo/api/breeds/image/random"
+      fetch(url)
+        .then(response => response.json())
+        .then(data => {
+          console.log(data);
+          let img = document.getElementById("img");
+          img.src = data.message;
+        }
+      )}
+  </script>
+</head>
+
+<body onload="myFunction()">
+  <div class="image-area">
+    <div class="img-wrapper">
+      <img src="" id="img" alt="">
+    </div>
+  </div>
+</body>
+</html>
