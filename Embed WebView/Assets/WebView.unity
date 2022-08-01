@@ -227,6 +227,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1836103358}
   - component: {fileID: 1836103357}
+  - component: {fileID: 1836103361}
   - component: {fileID: 1836103359}
   - component: {fileID: 1836103360}
   m_Layer: 0
@@ -243,14 +244,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1836103356}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb516f7ac0cee4b0f8345a5a60de3f42, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Url: https://dog.ceo/api/breeds/image/random
+  Url: 
   status: {fileID: 0}
-  jsonURL: https://dog.ceo/api/breeds/image/random
+  jsonURL: 
   thisRenderer: {fileID: 1836103360}
 --- !u!4 &1836103358
 Transform:
@@ -274,12 +275,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1836103356}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f5401c55bd8d148eaa4e5d774c131ed3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jsonURL: sample.html
+  jsonURL: 
   thisRenderer: {fileID: 1836103360}
 --- !u!23 &1836103360
 MeshRenderer:
@@ -323,6 +324,19 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &1836103361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1836103356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a66aca1f4fc94d7492e81d003ecf113, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SampleWebView: 
 --- !u!1 &2035580374
 GameObject:
   m_ObjectHideFlags: 0
